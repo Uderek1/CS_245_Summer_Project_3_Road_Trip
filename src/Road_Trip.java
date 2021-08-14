@@ -15,7 +15,7 @@ public class Road_Trip {
             visitingCities.add(attraction.location);
         }
         visitingCities.add(ending_city.location);
-        System.out.println("Searching for optimal route");
+
 
         City sc = starting_city;
         City ec = ending_city;
@@ -168,13 +168,16 @@ public class Road_Trip {
         int r = 1;
 
         System.out.println("Your trip will consist of " + routes.size() + " routes.");
+        int distance=0;
         for(ArrayList<Road> route : routes){
             System.out.println(r + ") Route from " + route.get(route.size() - 1).startLocation + " to " + route.get(0).endLocation + ".");
             for(int i = route.size() - 1; i >= 0; i--){
                 Road road = route.get(i);
+                distance+=road.distance;
                 System.out.print("\t->" + "Take road from " + road.startLocation + " to " + road.endLocation + ". ");
                 System.out.println("Estimate: " + road.distance + " miles, " + road.time + " minutes.");
             }
+            System.out.println("Total Cost:"+" "+distance+" "+"miles");
             r++;
         }
     }
